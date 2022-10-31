@@ -1,20 +1,40 @@
 import outsideClick from "./outside-click.js";
 
-export default function initMenuMobile() {
-  const menuButton = document.querySelector('[data-menu="button"]');
-  const menuList = document.querySelector('[data-menu="list"]');
-  const eventos = ["click"];
+export default class MenuMobile {
+  constructor(menuButton, menuList, events) {
+    this.menuButton = document.querySelector(menuButton);
+    this.menuList = document.querySelector(menuList);
+    this.activeClass = "ativo";
 
-  function openMenu() {
-    menuList.classList.add("ativo");
-    menuButton.classList.add("ativo");
-    outsideClick(menuList, eventos, () => {
-      menuList.classList.toggle("ativo");
-      menuButton.classList.toggle("ativo");
+    // Define click como argumento padrão de events
+    if (events === undefined) {
+      this.events = ["click"];
+    } else {
+      this.events = events;
+    }
+
+    this.openMenu = this.openMenu.bind(this);
+  }
+
+  openMenu() {
+    this.menuList.classList.add(this.activeClass);
+    this.menuButton.classList.add(this.activeClass);
+    outsideClick(this.menuList, this.events, () => {
+      this.menuList.classList.toggle(this.activeClass);
+      this.menuButton.classList.toggle(this.activeClass);
     });
   }
 
-  if (menuButton) {
-    eventos.forEach((evento) => menuButton.addEventListener(evento, openMenu));
+  addMenuMobileEvents() {
+    this.events.forEach((evento) =>
+      this.menuButton.addEventListener(evento, this.openMenu)
+    );
+  }
+
+  init() {
+    if (this.menuButton && this.menuList) {
+      this.addMenuMobileEvents();
+    }
+    return this;
   }
 }
