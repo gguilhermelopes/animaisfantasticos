@@ -9,6 +9,7 @@ import ScrollAnima from "./modules/scroll-anima.js";
 import MenuDropdown from "./modules/menu-dropdown.js";
 import MenuMobile from "./modules/menu-mobile.js";
 import Funcionamento from "./modules/funcionamento.js";
+import SlideNav from "./modules/slide.js";
 
 const scrollSuave = new ScrollSuave('[data-menu="suave"] a[href^="#"]');
 scrollSuave.init();
@@ -46,3 +47,7 @@ menuMobile.init();
 
 const funcionamento = new Funcionamento("[data-semana]", "aberto", "fechado");
 funcionamento.init();
+
+const slide = new SlideNav(".slide", ".container");
+slide.init();
+slide.addControl(".custom-control");
