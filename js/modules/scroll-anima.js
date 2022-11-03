@@ -3,7 +3,7 @@ import debounce from "./debounce.js";
 export default class ScrollAnima {
   constructor(sections) {
     this.sections = document.querySelectorAll(sections);
-    this.windowMetade = window.innerHeight * 0.7;
+    this.windowMetade = window.innerHeight * 0.8;
 
     this.checkDistance = debounce(this.checkDistance.bind(this), 50);
   }
@@ -24,8 +24,6 @@ export default class ScrollAnima {
     this.distance.forEach((item) => {
       if (window.scrollY > item.offset) {
         item.element.classList.add("ativo");
-      } else if (item.element.classList.contains("ativo")) {
-        item.element.classList.remove("ativo");
       }
     });
   }

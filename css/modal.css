@@ -17,11 +17,13 @@
 
 .modal {
   background: white;
-  min-width: 300px;
+  width: 80vw;
+  max-width: 600px;
   padding: 40px;
   border: 10px solid #fb5;
   box-shadow: 0 0 0 10px white;
   position: relative;
+  box-sizing: border-box;
 }
 
 @keyframes modalanima {
@@ -48,16 +50,9 @@
   top: -30px;
   right: -30px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
-  background: #e54;
-  font-size: 1.2rem;
-  color: white;
-  font-family: "IBM Plex Mono", monospace;
+  background: #e54 url("../img/fechar.svg") no-repeat center center;
   cursor: pointer;
   text-align: center;
-}
-
-.fechar:hover {
-  background: #e03926;
 }
 
 .modal label {
@@ -71,11 +66,14 @@
   width: 100%;
   padding: 0.7rem 0.5rem;
   box-sizing: border-box;
+  border: 2px solid #222;
+  border-radius: 0px;
 }
 
 .button {
   display: flex;
   gap: 1rem;
+  justify-content: space-between;
 }
 
 .modal button[type="submit"],
@@ -110,15 +108,13 @@
 }
 
 @media (max-width: 700px) {
-  .modal {
-    max-width: 150px;
-    padding: 20px;
+  .modal label {
+    font-size: 0.75rem;
   }
-  .button {
-    justify-content: space-between;
-  }
+
   .modal button[type="submit"],
   .modal button[type="button"] {
-    padding: 0.7rem 1.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.65rem;
   }
 }
