@@ -14,7 +14,7 @@ export default class ScrollAnima {
       const offset = section.offsetTop;
       return {
         element: section,
-        offset: offset - Math.floor(this.windowMetade),
+        offset: Math.floor(offset - this.windowMetade),
       };
     });
   }
